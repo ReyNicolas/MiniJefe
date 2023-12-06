@@ -6,7 +6,6 @@ using UnityEngine;
 public abstract class SkillData : ScriptableObject
 {
     public SkillsTypes skillType;
-    public ExecutionsTypes executionType;
     public int cost;
     public int timeToComplete;
 }
@@ -47,9 +46,4 @@ public enum SkillsTypes
    Area,
    Move
 }
-public enum ExecutionsTypes
-{
-    ToEquip,
-    Activation,
-    Instant,
-}
+

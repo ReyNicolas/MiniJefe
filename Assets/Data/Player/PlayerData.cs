@@ -8,6 +8,5 @@ public class PlayerData : ScriptableObject
     public int PlayerLevel;
     public int MoveSpeed;
     public ReactiveProperty<int> PlayerHealth = new ReactiveProperty<int>(0);
-    public List<SkillData> SkillsDatas = new List<SkillData>();
 
 }

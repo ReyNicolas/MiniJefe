@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc58d559b9b3ae34a91f5ac4e2dc74ec, type: 3}
+  m_Script: {fileID: 11500000, guid: c9aaf728f407e63469f43a6902aabdfa, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  playerLevel: 1
-  playerHealth:
-    value: -860
+  PlayerLevel: 0
+  MoveSpeed: 10
+  PlayerHealth:
+    value: 100
