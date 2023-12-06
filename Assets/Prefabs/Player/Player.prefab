@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -156,9 +156,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 40
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -193,7 +193,7 @@ Transform:
   m_GameObject: {fileID: 6329615553864958160}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 2407010249182575504}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -300,7 +300,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &3516621580607748936
 Animator:
   serializedVersion: 5
@@ -311,7 +311,7 @@ Animator:
   m_GameObject: {fileID: 6548458599399713271}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: acfc31766efbe9142b69a391193037ad, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -334,8 +334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 4d1e90ce7af617e4d8fd47d625b830ab, type: 3}
-  m_NotificationBehavior: 0
+  m_Actions: {fileID: -944628639613478452, guid: b4f1d1abbd917fa4781cacd2a3f60799, type: 3}
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -349,23 +349,47 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 9ff5926b-e8f9-46bc-b0c6-e515c0c7956e
-    m_ActionName: MouseAndKeyboard/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionId: ab41f24d-22a8-4869-b6ef-79df8b5a2ac7
+    m_ActionName: KeyboardMouse/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: ab4b2f30-86f1-4836-af59-d9cdb216a195
-    m_ActionName: MouseAndKeyboard/Aim[/Mouse/delta]
+    m_ActionId: a1fa1e5f-3d29-4efb-b2d6-5e52e11874c6
+    m_ActionName: KeyboardMouse/Aim[/Mouse/delta,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 606b50ba-27e6-40b1-b32c-a815b74f2ed2
-    m_ActionName: MouseAndKeyboard/MoveSkill[/Mouse/rightButton]
+      m_Calls:
+      - m_Target: {fileID: 4987025040190492758}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Shoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b84119a4-562e-4944-aadf-b8208339f222
+    m_ActionName: KeyboardMouse/Attack[/Keyboard/space,/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 00b1334b-c50a-4fcc-8e1e-f1775f444639
-    m_ActionName: MouseAndKeyboard/UseEquippedSkill[/Mouse/leftButton]
+      m_Calls:
+      - m_Target: {fileID: 4987025040190492758}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Dash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e8ac9af4-dcac-41b1-8aa8-373d2eb5acd3
+    m_ActionName: KeyboardMouse/Dash[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: MouseAndKeyboard
+  m_DefaultActionMap: KeyboardMouse
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &4987025040190492758
@@ -381,6 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 023db14c36d74e34a80764028bc79772, type: 2}
+  animator: {fileID: 3516621580607748936}
   spriteRenderer: {fileID: 6043631109846344308}
   aimTransform: {fileID: 6146711686118440681}
   rb: {fileID: 5875114038102949620}

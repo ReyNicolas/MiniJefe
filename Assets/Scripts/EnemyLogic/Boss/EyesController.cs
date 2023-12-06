@@ -33,9 +33,8 @@ public class EyesController : MonoBehaviour
     void SetPhase()
     {
         animator.SetTrigger("PhaseEyes"+ entities.Count);
-        entities.ForEach(e => e.SetPhase("Inactive"));
-        entities.ForEach(e => e.SetProjectileData(projectileDatas[entities.Count - 1]));
         MoveEyes();
+        entities.ForEach(e => SetEnemyBeforeNewPhase(e));
     }
 
     void MoveEyes()
@@ -47,12 +46,18 @@ public class EyesController : MonoBehaviour
         }
     }
 
+    void SetEnemyBeforeNewPhase(EnemyLogic enemyLogic)
+    {
+        enemyLogic.SetProjectileData(projectileDatas[entities.Count - 1]);
+        enemyLogic.SetDoingAction();
+    }
+
     void SetEyePhase()
     {
         positionCounter++;
         if(positionCounter == entities.Count)
         {
-            entities.ForEach(e => e.SetPhase("Phase"+ entities.Count));
+          entities.ForEach(e => e.SetPhase("Phase" + entities.Count));
         }
     }
 

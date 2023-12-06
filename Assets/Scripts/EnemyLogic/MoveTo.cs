@@ -1,15 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class MoveTo : MonoBehaviour
 {
     [SerializeField] int speed;
+    [SerializeField]Transform transformToMove;
     int distance;
     Action actionOnEndMoveTO;
-    Transform transformToMove;
-
 
     public void SetTransformToMove(Transform aTransform,int distance, Action anAction)
     {
@@ -21,12 +21,14 @@ public class MoveTo : MonoBehaviour
     private void Update()
     {
         if(transformToMove == null) return;
-        transform.position = Vector2.MoveTowards(transform.position, transformToMove.position, speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, transformToMove.position) <= distance)
+        transform.position = Vector2.MoveTowards(transform.position, transformToMove.position, speed * Time.deltaTime);
+        if ((Vector3.Distance(transform.position, transformToMove.position) <= distance + 0.05f))
         {
-            actionOnEndMoveTO();
+            actionOnEndMoveTO?.Invoke();
+            actionOnEndMoveTO = null;
         }
     }
+
 
 }

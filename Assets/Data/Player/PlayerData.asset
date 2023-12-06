@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   PlayerLevel: 0
-  MoveSpeed: 10
+  MoveSpeed: 5
   PlayerHealth:
     value: 100
+  Projectile: {fileID: 11400000, guid: 7cb6147c058ff50438f513d2734fe682, type: 2}

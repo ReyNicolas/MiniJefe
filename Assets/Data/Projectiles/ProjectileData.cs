@@ -8,5 +8,5 @@ public class ProjectileData : ScriptableObject
     [Header("Values info")]
     public int speed;
     public int damage;
-    public int cooldown;
+    public float cooldown;
 }

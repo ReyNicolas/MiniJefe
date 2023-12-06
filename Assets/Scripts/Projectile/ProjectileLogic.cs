@@ -24,7 +24,10 @@ public class ProjectileLogic : MonoBehaviour
 
     private void DoDamage(Collision2D collision)
     {
-       collision.gameObject.GetComponent<IHealth>().LoseHealth(projectileData.damage);
+      if(collision.gameObject.TryGetComponent<IHealth>(out IHealth healthLogic))
+        {
+            healthLogic.LoseHealth(projectileData.damage);
+        }
         Destroy(gameObject);
     }
 

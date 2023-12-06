@@ -29,6 +29,13 @@ public class PlayerHealthLogic : IHealth
         actualHealth.Value -= amount;
         inmuneTimer = inmuneWindow;
         animator.SetTrigger("Hit");
-        if (actualHealth.Value <= 0) animator.SetBool("Dead", true);
+        if (actualHealth.Value <= 0)
+        {
+            animator.SetBool("Dead", true);
+           if (TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
+            {
+                rb.velocity = Vector2.zero;
+            }
+        }
     }
 }

@@ -17,9 +17,6 @@ public class EnemyLogic : MonoBehaviour, IEventEntity
 
     [Header("State info")]
     [SerializeField] protected bool isDoingAction;
-    [SerializeField] protected bool isStunned;
-    [SerializeField] float stunnedTime;
-    [SerializeField] LayerMask enemiesMask;
     float attackTimer;
 
     protected CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -50,8 +47,7 @@ public class EnemyLogic : MonoBehaviour, IEventEntity
 
     #region Public methods
     public void SetHit()
-    {
-        animator.SetTrigger("Hit");
+    {        
         onTakeDamage?.Invoke();
     }
 
@@ -59,7 +55,7 @@ public class EnemyLogic : MonoBehaviour, IEventEntity
     {
         animator.SetTrigger("Dead");
         onEnemyDead?.Invoke(this);
-        Destroy(gameObject, 10f);
+        Destroy(gameObject,5);
     }
     public void SetProjectileData(ProjectileData projectileData)
     {
@@ -69,7 +65,15 @@ public class EnemyLogic : MonoBehaviour, IEventEntity
     public void SetPhase(string phaseName)
     {
         animator.SetTrigger(phaseName);
+        isDoingAction = false;
     }
+
+    public void SetDoingAction()
+    {
+        isDoingAction = true;
+        animator.SetTrigger("Inactive");
+    }
+
 
     #endregion
 

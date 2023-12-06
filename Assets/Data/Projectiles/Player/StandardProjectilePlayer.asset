@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc305792731a3a346adf3bbe49b1ac72, type: 3}
   m_Name: StandardProjectilePlayer
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8160275800072247262, guid: ddac21074d029da4495748e488982cd0, type: 3}
+  projectilePrefab: {fileID: 196873857411801554, guid: 87f9d7448b6f31d4eba50e903cb8345b, type: 3}
   speed: 10
-  damage: 10
-  cooldown: 2
+  damage: 50
+  cooldown: 0.5

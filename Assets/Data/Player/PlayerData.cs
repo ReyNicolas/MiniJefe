@@ -7,6 +7,8 @@ public class PlayerData : ScriptableObject
 {
     public int PlayerLevel;
     public int MoveSpeed;
+    public int DashCooldown;
     public ReactiveProperty<int> PlayerHealth = new ReactiveProperty<int>(0);
+    public ProjectileData Projectile;
 
 }
