@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UniRx.Triggers;
 using UniRx;
 using System;
 using System.Linq;
@@ -26,7 +25,7 @@ public class EnemyLogic : MonoBehaviour, IEventEntity
     protected CompositeDisposable compositeDisposable = new CompositeDisposable();
 
 
-    protected virtual void Start()
+    private void Start()
     {
         animator = GetComponent<Animator>();
         playerTransform = GameObject.FindWithTag("Player").transform;
@@ -34,10 +33,10 @@ public class EnemyLogic : MonoBehaviour, IEventEntity
     }
     private void OnDisable()
     {
-        DisposeLogic();
+        compositeDisposable.Dispose();
     }
 
-    protected virtual void SubscribeLogic()
+    void SubscribeLogic()
     {
         ////update
         var update = Observable.EveryUpdate();
@@ -49,36 +48,7 @@ public class EnemyLogic : MonoBehaviour, IEventEntity
              .Subscribe(_ => Attack()));
     }
 
-    public void DisposeLogic()
-    {
-        compositeDisposable.Dispose();
-    }
-
-
-    bool IsPlayerTag(Collider2D collision) => 
-        collision.CompareTag("Player");
-
-    protected virtual void Attack()
-    {
-        attackTimer = projectileData.cooldown;
-        Instantiate(projectileData.projectilePrefab, transform.position, transform.rotation);
-    }
-
-    void EndAction()
-    {
-       if(!isStunned)  isDoingAction = false;
-    }
-
-    void WhenGetHit() => 
-        isDoingAction = true;
-
-    void SetStunnedFalse()
-    {
-        isStunned=false;
-        isDoingAction=false;
-        animator.SetBool("Stunned", false);
-    }
-
+    #region Public methods
     public void SetHit()
     {
         animator.SetTrigger("Hit");
@@ -91,16 +61,27 @@ public class EnemyLogic : MonoBehaviour, IEventEntity
         onEnemyDead?.Invoke(this);
         Destroy(gameObject, 10f);
     }
-
-    void InvokeOnAttack()
+    public void SetProjectileData(ProjectileData projectileData)
     {
-        onAttack?.Invoke();
+        this.projectileData = projectileData;
     }
 
     public void SetPhase(string phaseName)
     {
         animator.SetTrigger(phaseName);
     }
+
+    #endregion
+
+    #region Private methods
+
+    void Attack()
+    {
+        attackTimer = projectileData.cooldown;
+        Instantiate(projectileData.projectilePrefab, transform.position, transform.rotation);
+    }
+    #endregion
+
 }
 
 

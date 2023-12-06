@@ -5,6 +5,7 @@ public class EyesController : MonoBehaviour
 {
     [SerializeField] List<EnemyLogic> entities = new List<EnemyLogic>();
     [SerializeField] List<Transform> eyesTransformsPositions = new List<Transform>();
+    [SerializeField] List<ProjectileData> projectileDatas = new List<ProjectileData>();
     [SerializeField] Animator animator;
     int positionCounter;
 
@@ -33,6 +34,7 @@ public class EyesController : MonoBehaviour
     {
         animator.SetTrigger("PhaseEyes"+ entities.Count);
         entities.ForEach(e => e.SetPhase("Inactive"));
+        entities.ForEach(e => e.SetProjectileData(projectileDatas[entities.Count - 1]));
         MoveEyes();
     }
 
@@ -41,7 +43,7 @@ public class EyesController : MonoBehaviour
         positionCounter = 0;
         for(int i = 0; i< entities.Count; i++)
         {
-            entities[i].GetComponent<MoveTo>().SetTransformToMove(eyesTransformsPositions[i], SetEyePhase);
+            entities[i].GetComponent<MoveTo>().SetTransformToMove(eyesTransformsPositions[i], 0,SetEyePhase);
         }
     }
 
