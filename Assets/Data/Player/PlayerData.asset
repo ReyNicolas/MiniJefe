@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerLevel: 0
   MoveSpeed: 5
+  DashForce: 5
+  DashCooldown: 3
   PlayerHealth:
     value: 100
   Projectile: {fileID: 11400000, guid: 7cb6147c058ff50438f513d2734fe682, type: 2}

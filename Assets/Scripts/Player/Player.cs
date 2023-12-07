@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     Vector2 moveDirection;
     ReactiveProperty<float> shootTimer = new ReactiveProperty<float>();
     ReactiveProperty<float> dashTimer = new ReactiveProperty<float>();
-    float pushTimer;
+    bool doingDash;
     ProjectileData projectileData;
 
     private void Start()
@@ -30,25 +30,19 @@ public class Player : MonoBehaviour
         this.projectileData = playerData.Projectile;
     }
 
-    public void GetPushed(Vector2 force, float time)
-    {
-        rb.velocity = force;
-        pushTimer = time;
-    }
 
 
     private void Update()
     {
         shootTimer.Value -= Time.deltaTime;
         dashTimer.Value -= Time.deltaTime;
-        pushTimer -= Time.deltaTime;
         Move();
         Aim();
     }
 
     void Move()
     {
-        if (pushTimer > 0) return;
+        if (doingDash) return;
          moveDirection = playerInput.actions["Move"].ReadValue<Vector2>();
 
         moveDirection = moveDirection.normalized;
@@ -68,7 +62,7 @@ public class Player : MonoBehaviour
 
     public void Shoot(CallbackContext callbackContext)
     {
-        if (shootTimer.Value > 0) return;
+        if (shootTimer.Value > 0 || doingDash) return;
         shootTimer.Value = projectileData.cooldown;
         Instantiate(projectileData.projectilePrefab, aimTransform.position, aimTransform.rotation);
     }
@@ -76,8 +70,14 @@ public class Player : MonoBehaviour
     public void Dash(CallbackContext callbackContext)
     {
         if (dashTimer.Value > 0) return;
+        rb.velocity = rb.velocity.normalized * playerData.DashForce;
         dashTimer.Value = playerData.DashCooldown;
-        animator.SetTrigger("Dash");
-        
+        doingDash = true;
+        animator.SetTrigger("Dash");        
+    }
+
+    void EndDash()
+    {
+        doingDash = false;
     }
 }
