@@ -13,7 +13,7 @@ public class FatherHealth : MonoBehaviour
     public  void LoseHealth(int amount)
     {
         actualHealth.Value -= amount;
-        if(actualHealth.Value < 0)
+        if(actualHealth.Value <= 0)
         {
             Destroy(gameObject);
         }
