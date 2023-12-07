@@ -11,9 +11,10 @@ public class EnemyLogic : MonoBehaviour, IEventEntity
     public event Action onAttack;
 
     [Header("References info")]
-    [SerializeField]protected Animator animator;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected Transform aimTransform;
     [SerializeField] protected Transform playerTransform;
-    [SerializeField] ProjectileData projectileData;
+    [SerializeField] protected ProjectileData projectileData;
 
     [Header("State info")]
     [SerializeField] protected bool isDoingAction;
@@ -82,7 +83,7 @@ public class EnemyLogic : MonoBehaviour, IEventEntity
     void Attack()
     {
         attackTimer = projectileData.cooldown;
-        Instantiate(projectileData.projectilePrefab, transform.position, transform.rotation);
+        Instantiate(projectileData.projectilePrefab, aimTransform.position, aimTransform.rotation);
     }
     #endregion
 
