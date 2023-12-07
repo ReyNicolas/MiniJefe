@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoDestruction : MonoBehaviour
+public class AutoDestruction : Destruction
 {
     [SerializeField] MoveTo moveTo;
     [SerializeField] EnemyLogic enemyLogic;
@@ -24,6 +25,22 @@ public class AutoDestruction : MonoBehaviour
         {
             healthLogic.LoseHealth(damage);
         }
-            enemyLogic.SetDead();
+
+        enemyLogic.SetDead();
+        InstantiateFx();
+    }
+}
+
+
+public abstract class Destruction : MonoBehaviour
+{
+    [SerializeField] Transform destructionFxPrefab;
+    [SerializeField] float size;
+
+    public void InstantiateFx()
+    {
+        var destructiontransform = Instantiate(destructionFxPrefab, transform.position, transform.rotation);
+        destructiontransform.localScale=Vector3.one * size;
+        Destroy(destructiontransform.gameObject,5);
     }
 }

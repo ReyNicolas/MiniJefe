@@ -226,6 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8313a7f5bf6bc2948bb61ed22c9eb8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destructionFxPrefab: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+  size: 0.5
   moveTo: {fileID: 6692259191996107182}
   enemyLogic: {fileID: 2567361805430489619}
   radius: 3

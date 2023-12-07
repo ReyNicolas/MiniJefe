@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 3060333466499406745}
   - component: {fileID: 1766085637702613222}
   - component: {fileID: 4167313329317692875}
+  - component: {fileID: 7762510065983187615}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -367,6 +368,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   maxDistance: 12
+--- !u!114 &7762510065983187615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4905940935324749600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642ba2cbdd508b6408f77af05db66871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructionFxPrefab: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+  size: 2
 --- !u!1 &5784492252663823172
 GameObject:
   m_ObjectHideFlags: 0
