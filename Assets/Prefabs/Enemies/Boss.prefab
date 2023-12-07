@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 6000226004517138693}
   - component: {fileID: 3060333466499406745}
   - component: {fileID: 1766085637702613222}
+  - component: {fileID: 4167313329317692875}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -351,7 +352,21 @@ MonoBehaviour:
   childPrefab: {fileID: 1122696975606074317, guid: 24b3e72b4b4d40340812579176750d6f, type: 3}
   myHealthLogic: {fileID: 3060333466499406745}
   changeChildActiveDamageTime: 5
-  rotationDegreesPerSecond: 60
+  rotationDegreesPerSecond: 180
+--- !u!114 &4167313329317692875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4905940935324749600}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2268e4467b9741648af07600cd79f09b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  maxDistance: 12
 --- !u!1 &5784492252663823172
 GameObject:
   m_ObjectHideFlags: 0
