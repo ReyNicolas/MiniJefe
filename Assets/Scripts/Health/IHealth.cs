@@ -7,7 +7,4 @@ public abstract class IHealth : MonoBehaviour
     public  ReactiveProperty<int> actualHealth = new ReactiveProperty<int>();
 
     public abstract void LoseHealth(int amount);
-
-
-
 }

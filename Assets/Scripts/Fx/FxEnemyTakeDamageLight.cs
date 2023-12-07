@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class FxLight : MonoBehaviour
+public class FxEnemyTakeDamageLight : MonoBehaviour
 {
     [SerializeField] EnemyLogic enemyLogic;
     [SerializeField] Light2D lightFX;
+    [SerializeField] int intensity;
 
 
     private void Awake()
@@ -26,7 +28,7 @@ public class FxLight : MonoBehaviour
 
     IEnumerator SetLightCor()
     {
-        lightFX.intensity = 10;
+        lightFX.intensity = intensity;
         yield return new WaitForSeconds(.2f);
         lightFX.intensity = 0;
     }

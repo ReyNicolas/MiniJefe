@@ -489,3 +489,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLogic: {fileID: 2567361805430489619}
   lightFX: {fileID: 8582867951298469066}
+  intensity: 10

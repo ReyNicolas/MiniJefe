@@ -5,7 +5,8 @@ using UnityEngine.Device;
 using static UnityEngine.InputSystem.InputAction;
 
 public class Player : MonoBehaviour
-{    
+{
+    [Header("References info")]
     public PlayerData playerData;
     [SerializeField] Animator animator;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     Vector2 moveDirection;
     ReactiveProperty<float> shootTimer = new ReactiveProperty<float>();
     ReactiveProperty<float> dashTimer = new ReactiveProperty<float>();
+    float pushTimer;
     ProjectileData projectileData;
 
     private void Start()
@@ -28,16 +30,25 @@ public class Player : MonoBehaviour
         this.projectileData = playerData.Projectile;
     }
 
+    public void GetPushed(Vector2 force, float time)
+    {
+        rb.velocity = force;
+        pushTimer = time;
+    }
+
+
     private void Update()
     {
         shootTimer.Value -= Time.deltaTime;
         dashTimer.Value -= Time.deltaTime;
+        pushTimer -= Time.deltaTime;
         Move();
         Aim();
     }
 
     void Move()
     {
+        if (pushTimer > 0) return;
          moveDirection = playerInput.actions["Move"].ReadValue<Vector2>();
 
         moveDirection = moveDirection.normalized;
