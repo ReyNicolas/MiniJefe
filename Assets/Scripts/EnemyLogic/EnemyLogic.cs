@@ -18,7 +18,7 @@ public class EnemyLogic : MonoBehaviour, IEventEntity
 
     [Header("State info")]
     [SerializeField] protected bool isDoingAction;
-    float attackTimer;
+    float attackTimer = 0.1f;
 
     protected CompositeDisposable compositeDisposable = new CompositeDisposable();
 
